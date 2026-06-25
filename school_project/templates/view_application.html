@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Application Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h1>{{ application[1] }}</h1>
+        <hr>
+        <p><strong>Birth Date:</strong> {{ application[2] }}</p>
+        <p><strong>Gender:</strong> {{ application[3] }}</p>
+        <p><strong>Previous School:</strong> {{ application[4] }}</p>
+        <p><strong>Address:</strong> {{ application[5] }}</p>
+        <p><strong>Email:</strong> {{ application[6] }}</p>
+        <p><strong>Phone:</strong> {{ application[7] }}</p>
+        <p><strong>Parent Name:</strong> {{ application[8] }}</p>
+        <p><strong>Parent Phone:</strong> {{ application[9] }}</p>
+        <p><strong>Grade:</strong> {{ application[10] }}</p>
+        <p><strong>Stream:</strong> {{ application[11] }}</p>
+        <p><strong>Status:</strong> {{ application[14] }}</p>
+        <hr>
+
+        <a href="{{ url_for('static', filename='uploads/' + application[12]) }}" target="_blank">
+            <button>View Transcript</button>
+        </a>
+        {% if application[13] %}
+        <a href="{{ url_for('static', filename='uploads/' + application[13]) }}" target="_blank">
+            <button>View Additional Document</button>
+        </a>
+        {% endif %}
+        <br><br>
+        {% if application[14] == "Pending" %}
+            <a href="/accept_application/{{ application[0] }}">
+                <button>Move to Waiting</button>
+            </a>
+            <a href="/reject_application/{{ application[0] }}">
+                <button>Reject</button>
+            </a>
+            {% elif application[14] == "Waiting" %}
+            <a href="/enroll_student/{{ application[0] }}">
+                <button>Enroll Student</button>
+            </a>
+            <a href="/reject_application/{{ application[0] }}">
+                <button>Reject</button>
+            </a>
+            {% elif application[14] == "Enrolled" %}
+            <h1 disabled>Student Enrolled</h1>
+            {% elif application[14] == "Rejected" %}
+            <h1 disabled>Application Rejected</h1>
+            {% endif %}
+            <a href="mailto:{{ application[6] }}
+            ?subject=Regarding Your Admission
+            &cc={{ school_email }}" target="_blank">
+                <button>Contact Applicant</button>
+            </a>
+            <a href="/dashboard/admin">
+                <button>Back</button>
+            </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

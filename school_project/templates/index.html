@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Magic Carpet School</title>
+        <link rel="stylesheet" href="../static/css/style.css">       
+    </head>
+    <body class="body">
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+            <section class="navtags">
+                <a href="{{ url_for('home') }}" class="navtext">Home</a>
+                <a href="{{ url_for('about') }}" class="navtext">About us</a>
+                <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+                <a href="{{ url_for('history') }}" class="navtext">History</a>
+                <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+                <a href="/login" class="navtext">Login</a>
+                <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+            </section>
+        </nav>
+        </div>
+        <section class="welcome">
+            <div class="introdiv">
+            <h1 class="introh1">LEARNING IS MAGIC</h1>
+            <details class="fun">
+               <summary>Magic</summary>
+            <ul>
+                <li>MInds</li>
+                <li>Aspiring to</li>
+                <li>Greatness through</li>
+                <li>Innovation &</li>
+                <li>Cooperation</li>
+            </ul> 
+            </details>
+            </div>
+        </section>
+        <section class="firstsec">
+            <img src="../static/images/bg-overlay.webp" class="firstimgs">
+            <div class="fsttxt">
+                <h1 class="fsttexth" style="font-size: x-large;">Why should you choose Magic?</h1>
+                <p class="fsttext">it is a place where students are inspired to grow, explore, and achieve their full potential.
+                At Magic Carpet School, learning is engaging, supportive, and designed to build both academic excellence and strong character. 
+                The school provides a safe and encouraging environment where students are guided by dedicated teachers who truly care about their success.
+                </p>
+            </div>
+        </section>
+            <div class="academic-section">
+        <h1 class="academich1">Academics</h1>
+
+        <div class="academic-grid">
+
+            <div class="acadcard">
+                <h3>Primary Education</h3>
+                <p>
+                Our primary program builds strong foundations in mathematics,
+                science, language, and creativity while encouraging curiosity
+                and independent thinking.
+                </p>
+            </div>
+
+            <div class="acadcard">
+                <h3>Secondary Education</h3>
+                <p>
+                Students develop deeper academic knowledge while preparing
+                for national examinations and future university studies.
+                </p>
+            </div>
+
+            <div class="acadcard">
+                <h3>Creative Learning</h3>
+                <p>
+                We promote innovation, teamwork, and leadership through
+                projects, presentations, and collaborative activities.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="facilities">
+
+    <h1 class="facilityh1">Our Compounds & Facilities</h1>
+
+    <div class="facility-grid">
+
+        <div class="facility-card">
+            <h3>Modern Classrooms</h3>
+            <p>
+            Comfortable learning spaces designed to support focus,
+            collaboration, and interactive learning.
+            </p>
+        </div>
+
+        <div class="facility-card">
+            <h3>Sports Grounds</h3>
+            <p>
+            Football fields, basketball courts, and other spaces
+            where students stay active and healthy.
+            </p>
+        </div>
+
+        <div class="facility-card">
+            <h3>Science Labs</h3>
+            <p>
+            Students explore real experiments that strengthen
+            their understanding of physics, chemistry, and biology.
+            </p>
+        </div>
+
+        <div class="facility-card">
+            <h3>Community Environment</h3>
+            <p>
+            A welcoming environment that encourages respect,
+            cooperation, and lifelong friendships.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="cta">
+
+    <h1>Start Your Journey With Magic Carpet School</h1>
+    <p>Join a community where learning, creativity, and character grow together.</p>
+
+    <a href="{{ url_for('registration') }}"><button class="applybtn">Apply Now</button></a>
+
+</section>
+
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>Magic Carpet School</h3>
+            <p>Where Learning Is Magic.</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <p>
+                <a href="index.html" class="navtext">Home</a>
+                <a href="about.html" class="navtext">About us</a>
+                <a href="history.html" class="navtext">History</a>
+                <a href="#" class="navtext">Courses</a>
+                <a href="contact.html" class="navtext">Contact</a>
+                <a href="registration.html" class="navtext">Register</a>
+            </p>
+        </div>
+
+        <div>
+            <h4>Contact</h4>
+            <p>Addis Ababa, Ethiopia</p>
+            <p>info@magiccarpet.edu</p>
+        </div>
+
+    </div>
+
+</footer>
+    
+    </body>
+    </html>

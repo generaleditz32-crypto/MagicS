@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/loginform.css') }}">
+</head>
+<body class="body">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="popup {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+        <section class="navtags">
+            <a href="{{ url_for('home') }}" class="navtext">Home</a>
+            <a href="{{ url_for('about') }}" class="navtext">About us</a>
+            <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+            <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+            <a href="/login" class="navtext">Login</a>
+            <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+        </section>
+    </nav>
+    <div class="logins">
+        <div class="card">
+            <div class="header">
+                <h2 class="title">Admin Login</h2>
+            </div>
+            <div class="Loginform">
+                <form method="POST" class="form">
+                    <input type="text" name="id" placeholder="Admin ID" class="input" required><br><br>
+                    <input type="password" name="password" placeholder="Password" class="input" required><br><br>
+                    <button type="submit" class="loginbtn">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
+</form>
+
+</body>
+</html>

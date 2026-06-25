@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School History</title>
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="body">
+
+<nav class="navbar">
+<a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+<section class="navtags">
+<a href="{{ url_for('home') }}" class="navtext">Home</a>
+<a href="{{ url_for('about') }}" class="navtext">About us</a>
+<a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+<a href="{{ url_for('history') }}" class="navtext">History</a>
+<a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+<a href="/login" class="navtext">Login</a>
+<a href="{{ url_for('registration') }}" class="navtext">Register</a>
+</section>
+</nav>
+
+<section class="welcome">
+<div class="introdiv">
+<h1 class="introh1">OUR HISTORY</h1>
+<p class="intropara">Discover the journey of Magic Carpet School from a small beginning to a modern institution committed to excellence.</p>
+</div>
+</section>
+
+<section class="academic-section">
+<h1 class="academich1">The Magic Carpet Story</h1>
+</section>
+
+<section class="firstsec">
+<img src="../static/images/history-1.jpg" class="firstimgs">
+<div class="fsttxt">
+<h2 class="fsttexth">Chapter One - Foundation</h2>
+<p class="fsttext">Magic Carpet School was established in 1999 in Yeka district of Addis Ababa with the goal of providing quality education and nurturing future leaders.</p>
+<p class="fsttext">The school began with a small community of students and dedicated teachers sharing a vision of academic excellence.</p>
+</div>
+</section>
+
+<section class="firstsec">
+<div class="fsttxt">
+<h2 class="fsttexth">Chapter Two - Early Development</h2>
+<p class="fsttext">As enrollment increased, new classrooms were built, additional teachers joined the staff, and more subjects were introduced.</p>
+</div>
+<img src="../static/images/history-2.jpg" class="firstimgs">
+</section>
+
+<section class="academic-section">
+<h1 class="academich1">Major Milestones</h1>
+<div class="academic-grid">
+<div class="acadcard"><h3>New Subjects</h3><p>Expanded curriculum for every learner.</p></div>
+<div class="acadcard"><h3>Qualified Teachers</h3><p>Experienced educators joined the school.</p></div>
+<div class="acadcard"><h3>Campus Growth</h3><p>Facilities improved to support learning.</p></div>
+</div>
+</section>
+
+<section class="firstsec">
+<img src="../static/images/history-3.jpg" class="firstimgs">
+<div class="fsttxt">
+<h2 class="fsttexth">Chapter Three - Academic Growth</h2>
+<p class="fsttext">Students consistently achieved stronger academic performance while science, ICT and extracurricular programs continued to expand.</p>
+</div>
+</section>
+
+<section class="firstsec">
+<div class="fsttxt">
+<h2 class="fsttexth">Chapter Four - Modern Era</h2>
+<p class="fsttext">Today the school offers modern classrooms, laboratories, digital learning tools and a supportive environment for every student.</p>
+</div>
+<img src="../static/images/history-4.jpg" class="firstimgs">
+</section>
+
+<section class="facilities">
+<h1 class="facilityh1">Our Vision</h1>
+<div class="facility-grid">
+<div class="facility-card"><h3>Academic Excellence</h3><p>Helping every student reach their potential.</p></div>
+<div class="facility-card"><h3>Innovation</h3><p>Preparing learners for the future.</p></div>
+<div class="facility-card"><h3>Leadership</h3><p>Building confidence and character.</p></div>
+<div class="facility-card"><h3>Community</h3><p>Creating a welcoming learning environment.</p></div>
+</div>
+</section>
+
+<section class="cta">
+<h1>Be Part of Our Story</h1>
+<p>Join Magic Carpet School and continue this journey with us.</p>
+<a href="{{ url_for('registration') }}"><button class="applybtn">Apply Now</button></a>
+</section>
+
+<footer class="footer">
+<div class="footer-content">
+<div><h3>Magic Carpet School</h3><p>Where Learning Is Magic.</p></div>
+<div>
+<h4>Quick Links</h4>
+<p>
+<a href="{{ url_for('home') }}" class="navtext">Home</a>
+<a href="{{ url_for('about') }}" class="navtext">About</a>
+<a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+<a href="{{ url_for('history') }}" class="navtext">History</a>
+<a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+</p>
+</div>
+<div><h4>Contact</h4><p>Addis Ababa, Ethiopia</p><p>info@magiccarpet.edu</p></div>
+</div>
+</footer>
+
+</body>
+</html>

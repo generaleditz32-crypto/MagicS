@@ -1,0 +1,197 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px) brightness(20%);
+    background-color: #bceafe;
+    background-image: 
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.95), rgba(0, 0, 0, 0.3)),
+    url(../images/backgroundimg.jpg);
+    background-blend-mode: luminosity;
+    background-position: 100%;
+    background-size:cover;
+    background-attachment: fixed;
+}
+
+.logo {
+    justify-self: center;
+    padding-left: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    font-size: xx-large;
+    animation: fadeInUp 1s ease-out forwards;
+    transition-duration: 0.2s;
+}
+.logo:hover{
+    scale: 102%;
+    transition-duration: 0.2s;
+}
+
+.logoimg{
+    width: 200px;
+}
+
+.navbar{
+    height: auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    background: rgba(0, 0, 0, 0.4);  
+    animation: fadeInDown 1s ease-out forwards;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.navtags{
+   display: flex;
+   margin-left: auto;
+   margin-right: 30px;
+   animation: fadeInUp 1s ease-out forwards;
+   gap: 30px;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+
+.navtext {
+    display: flex;
+    font-size: 18px;
+    font-family:"Times New Roman", Times, serif;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid transparent; 
+    transition-duration: 0.2s;
+}
+
+.navtext:hover {
+    text-shadow:0 0 5px rgb(255, 255, 255), 0 0 10px rgb(138, 138, 138), 0 0 20px rgb(0, 0, 0), 0 0 40px rgb(164, 164, 164);
+    border-bottom: 3px solid rgb(255, 254, 254);
+    scale: 115%;
+    transition-duration: 0.2s;
+}
+
+.logins {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    display: block;
+}
+
+.card {
+    width: 400px;
+    padding: 40px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease;
+    margin-top: 10%;
+}
+
+.title {
+    margin: 5px 0;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #ffffff;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input:focus {
+    border-color: #2a5298;
+    box-shadow: 0 0 5px rgba(42,82,152,0.3);
+}
+
+.loginbtn {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(90deg,hsl(0, 0%, 100%),#00eaff);
+    color: rgb(15, 15, 15);
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.loginbtn:hover {
+    background: linear-gradient(90deg,hsl(0, 0%, 100%),#00b7ff);
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.68);
+}
+
+.link {
+    color: #aef8ff;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    z-index: 9999;
+    animation: slideIn 0.4s ease, fadeOut 0.6s ease 3s forwards;
+}
+
+.popup.success {
+    background-color: #0a3614;
+}
+
+/* error */
+.popup.error {
+    background-color: #530e0e;
+    opacity: 60%;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}

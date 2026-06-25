@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="popup {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+<div class="container">
+    <h1>Admin Panel</h1>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <h3>Students</h3>
+            <h1>{{ student_count }}</h1>
+        </div>
+        <div class="stat-card">
+            <h3>Teachers</h3>
+            <h1>{{ teacher_count }}</h1>
+        </div>
+        <div class="stat-card">
+            <h3>Announcements</h3>
+            <h1>{{ announcement_count }}</h1>
+        </div>
+        <div class="stat-card">
+            <h3>Messages</h3>
+            <h1>{{ message_count }}</h1>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <div class="card">
+        <button onclick="showSection('student')">Add Student</button>
+        <button onclick="showSection('teacher')">Add Teacher</button>
+        <button onclick="showSection('announcement')">Announcements</button>
+        <button onclick="showSection('users')">View Users</button>
+        <button onclick="showSection('applications')">Applications</button>
+        <button onclick="showSection('settings')">School Email</button>
+    </div>
+
+    <!-- ADD STUDENT -->
+    <div id="student" class="card section">
+        <h2>Add Student</h2>
+        <form method="POST" action="/add_student">
+            <input type="text" name="name" placeholder="Name" required><br><br>
+            <select name="grade" id="grade" class="dropdown">
+                <option>Nursery</option>
+                <option>LKG</option>
+                <option>UKG</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select><br><br>
+            <!-- FIX 3: hidden by default; toggleStream() shows it only for grade 11/12 -->
+            <select name="stream" id="stream-group" style="display:none;" class="dropdown">
+                <option>Natural</option>
+                <option>Social</option>
+            </select><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <!-- ADD TEACHER -->
+    <div id="teacher" class="card section" style="display:none;">
+        <h2>Add Teacher</h2>
+        <form method="POST" action="/add_teacher">
+            <input type="text" name="name" placeholder="Name" required><br><br>
+            <select name="grade" id="teacherGrade" class="dropdown">
+                <option>Nursery</option>
+                <option>LKG</option>
+                <option>UKG</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select><br>
+
+            <!-- FIX 2: hidden by default; updateTeacherStream() shows it only for grade 11/12 -->
+            <select name="stream" id="teacherStream" style="display:none;" class="dropdown">
+                <option value="">All streams</option>
+                <option value="Natural">Natural</option>
+                <option value="Social">Social</option>
+            </select><br>
+
+            <select name="subject" id="teacherSubject" class="dropdown">
+                <option>Math</option>
+                <option>Physics</option>
+                <option>Chemistry</option>
+                <option>Biology</option>
+                <option>English</option>
+                <option>ICT</option>
+                <option>History</option>
+                <option>Geography</option>
+                <option>Economics</option>
+            </select>
+            <input type="password" name="password" required placeholder="Password"><br><br>
+            <button type="submit">Add Teacher</button>
+        </form>
+    </div>
+
+    <!--admissions email-->
+    <div id="settings" class="card section" style="display:none;">
+        <h2>School Email</h2>
+        <form action="/update_school_email" method="POST">
+        <label>Admissions Email</label><br>
+        <input
+        type="email"
+        name="school_email"
+        value="{{ school_email }}"
+        required>
+        <br><br>
+        <button type="submit">
+        Save
+        </button>
+        </form>
+    </div>
+
+    <!-- ANNOUNCEMENTS -->
+    <div id="announcement" class="card section" style="display:none;">
+        <hr><br>
+
+        <h2>Existing Announcements</h2>
+
+        {% for a in announcements %}
+
+        <div class="card">
+
+            <h3>{{ a[1] }}</h3>
+            <p>{{ a[2] }}</p>
+            <small>{{ a[3] }}</small>
+
+            <br><br>
+
+            <a href="/edit_announcement/{{ a[0] }}">
+                <button>Edit</button>
+            </a>
+
+            <a href="/delete_announcement/{{ a[0] }}"
+            onclick="return confirm('Delete announcement?')">
+
+                <button>Delete</button>
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+        <h2>Post Announcement</h2>
+        <form method="POST" action="/add_announcement">
+            <input type="text" name="title" placeholder="Title"><br><br>
+            <textarea name="message" placeholder="Message"></textarea><br><br>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <!-- USERS -->
+    <div id="users" class="card section" style="display:none;">
+        <h2>All Users</h2>
+
+        <div class="filter-bar">
+         <form method="GET" class="filter-form">
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search by name or ID">
+
+            <select name="role" class="dropdown">
+                <option value="">All Roles</option>
+                <option value="student">Students</option>
+                <option value="teacher">Teachers</option>
+                <option value="admin">Admins</option>
+            </select>
+
+            <!-- FIX 4: added Nursery, LKG, UKG to match the add-student form -->
+            <select name="grade" class="dropdown">
+                <option value="">All Grades</option>
+                <option value="Nursery">Nursery</option>
+                <option value="LKG">LKG</option>
+                <option value="UKG">UKG</option>
+                <option value="1">Grade 1</option>
+                <option value="2">Grade 2</option>
+                <option value="3">Grade 3</option>
+                <option value="4">Grade 4</option>
+                <option value="5">Grade 5</option>
+                <option value="6">Grade 6</option>
+                <option value="7">Grade 7</option>
+                <option value="8">Grade 8</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+            </select>
+
+            <select name="stream" class="dropdown">
+                <option value="">All Streams</option>
+                <option value="Natural">Natural</option>
+                <option value="Social">Social</option>
+            </select>
+
+            <button type="submit">
+                Filter
+            </button>
+
+        </form>
+        </div>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Grade</th>
+                <th>Stream</th>
+                <th>Subject</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for u in users %}
+            <tr>
+                <td>{{ u[0] }}</td>
+                <td>{{ u[1] }}</td>
+                <td>{{ u[3] }}</td>
+                <td>{{ u[4] }}</td>
+                <td>{{ u[5] }}</td>
+                <td>{{ u[6] }}</td>
+                <td>
+                    <a href="/edit_user/{{ u[0] }}">
+                        <button>Edit</button>
+                    </a>
+
+                    <a href="/delete_user/{{ u[0] }}"
+                    onclick="return confirm('Delete this user?')">
+                        <button>Delete</button>
+                    </a>
+
+                    <a href="/reset_password/{{ u[0] }}">
+                        <button>Reset Password</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div id="applications"
+        class="card section"
+        style="display:none;">
+
+        <h2>Student Applications</h2>
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for app in applications %}
+            <tr>
+                <td>{{ app[1] }}</td>
+
+                <td>
+                    {{ app[14] }}
+                </td>
+
+                <td>
+                    <a href="/view_application/{{ app[0] }}">
+                        <button>View</button>
+                    </a>
+
+                    {% if app[14] == "Pending" %}
+                        <a href="/accept_application/{{ app[0] }}">
+                            <button>Accept</button>
+                        </a>
+
+                        <a href="/reject_application/{{ app[0] }}">
+                            <button>Reject</button>
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <a href="/logout" style="background-color: red; padding: 15px 20px; border-radius: 20px; color: white; text-decoration: none;">Logout</a>
+</div>
+
+<script>
+function showSection(id) {
+    localStorage.setItem("adminSection", id);
+    document.querySelectorAll(".section")
+    .forEach(s => s.style.display = "none");
+    document.getElementById(id).style.display = "block";
+}
+
+window.onload = function() {
+    let activeSection =
+        localStorage.getItem("adminSection");
+    if(!activeSection) {
+        activeSection = "student";
+    }
+    showSection(activeSection);
+}
+</script>
+
+<script>
+// FIX 5: complete subjects map covering all grades
+const subjects = {
+
+    // Early grades — core subjects only
+    "Nursery-": ["English", "Math", "Spoken English"],
+    "LKG-":     ["English", "Math", "Spoken English"],
+    "UKG-":     ["English", "Math", "Spoken English"],
+    "1-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science", "Spoken English"],
+    "2-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science", "Spoken English"],
+    "3-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science", "Spoken English"],
+    "4-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science", "Spoken English"],
+    "5-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science"],
+    "6-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science"],
+    "7-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science"],
+    "8-":       ["English", "Math", "Amharic", "Oromic", "HPE", "ICT", "Social Science", "Environmental Science"],
+    "9-":       ["English", "Math", "Physics", "Chemistry", "Biology", "History", "Geography", "Economics", "Amharic", "Oromic", "HPE", "ICT"],
+    "10-":      ["English", "Math", "Physics", "Chemistry", "Biology", "History", "Geography", "Economics", "Amharic", "Oromic", "HPE", "ICT"],
+
+    // Grade 11 & 12 — stream-specific
+    "11-Natural": ["Physics", "Chemistry", "Biology", "Agriculture", "WDD"],
+    "12-Natural": ["Physics", "Chemistry", "Biology", "Agriculture", "WDD"],
+    "11-Social":  ["History", "Geography", "Economics", "Accounting"],
+    "12-Social":  ["History", "Geography", "Economics", "Accounting"],
+
+    // Grade 11/12 — no stream selected yet
+    "11-": ["Math",  "English", "ICT"],
+    "12-": ["Math",  "English", "ICT"]
+};
+
+// FIX 2: show/hide stream select for teachers based on grade
+function updateTeacherStream() {
+    const grade = document.getElementById("teacherGrade").value;
+    const streamSelect = document.getElementById("teacherStream");
+    const needsStream = (grade === "11" || grade === "12");
+    streamSelect.style.display = needsStream ? "inline-block" : "none";
+    if (!needsStream) streamSelect.value = "";
+    updateSubjects();
+}
+
+// FIX 1: guard against missing keys so forEach never runs on undefined
+function updateSubjects() {
+    const grade  = document.getElementById("teacherGrade").value;
+    const stream = document.getElementById("teacherStream").value;
+    const subjectSelect = document.getElementById("teacherSubject");
+
+    const key = grade + "-" + stream;
+    const list = subjects[key] || subjects[grade + "-"] || ["English", "Math"];
+
+    subjectSelect.innerHTML = "";
+    list.forEach(subject => {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject;
+        subjectSelect.appendChild(option);
+    });
+}
+
+document.getElementById("teacherGrade").addEventListener("change", updateTeacherStream);
+document.getElementById("teacherStream").addEventListener("change", updateSubjects);
+
+updateTeacherStream(); // run once on load
+</script>
+
+<script>
+// Student stream toggle — unchanged logic, but stream-group now starts hidden (FIX 3)
+const grade = document.getElementById("grade");
+const streamGroup = document.getElementById("stream-group");
+
+function toggleStream() {
+    if (grade.value === "11" || grade.value === "12") {
+        streamGroup.style.display = "block";
+    } else {
+        streamGroup.style.display = "none";
+    }
+}
+
+toggleStream();
+grade.addEventListener("change", toggleStream);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Entry</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Grade Entry</h1>
+
+        <h2>{{ student[1] }}</h2>
+
+        <p><strong>Subject:</strong> {{ subject }}</p>
+
+        <form method="POST">
+
+            <label>Test Score</label>
+            <input type="number" name="test"
+                   value="{{ grade[3] if grade else '' }}"
+                   required>
+
+            <br><br>
+
+            <label>Assignment Score</label>
+            <input type="number" name="assignment"
+                   value="{{ grade[4] if grade else '' }}"
+                   required>
+
+            <br><br>
+
+            <label>Final Exam</label>
+            <input type="number" name="final_exam"
+                   value="{{ grade[5] if grade else '' }}"
+                   required>
+
+            <br><br>
+
+            <button type="submit">Save Grades</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<a href="/dashboard/teacher">Back</a>
+
+</body>
+</html>

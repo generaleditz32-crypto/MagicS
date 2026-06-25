@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="popup {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Teacher Panel</h2>
+
+        <a href="#dashboard">Dashboard</a>
+        <a href="#students">My Students</a>
+        <a href="#">Grades</a>
+        <a href="#">Messages</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Students</h3>
+                <h1>{{ student_count }}</h1>
+            </div>
+            <div class="stat-card">
+                <h3>Messages</h3>
+                <h1>{{ message_count }}</h1>
+            </div>
+            <div class="stat-card">
+                <h3>Grades</h3>
+                <h1>{{ grade_count }}</h1>
+            </div>
+        </div>
+
+        <!-- TEACHER INFO -->
+        <div class="card" id="dashboard">
+            <h1>Welcome {{ teacher[1] }}</h1>
+            <p><strong>Subject:</strong> {{ teacher[6] }}</p>
+            <p><strong>Grade:</strong> {{ teacher[4] }}</p>
+        </div>
+
+        <!-- STUDENTS LIST -->
+        <div class="card" id="students">
+            <h2>Students</h2>
+            <h3>Total Students: {{ students|length }}</h3>
+            {% for s in students %}
+            <div class="card" style="margin-top:15px;">
+                <p><strong>{{ s[1] }}</strong> (ID: {{ s[0] }})</p>
+                <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                    <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                        <a href="/chat/{{ s[0] }}">
+                            <button>Chat</button>
+                        </a>
+                        <a href="/grade/{{ s[0] }}">
+                            <button>Add Grades</button>
+                        </a>
+                        <a href="/edit_grades/{{ s[0] }}">
+                            <button>Edit Grades</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

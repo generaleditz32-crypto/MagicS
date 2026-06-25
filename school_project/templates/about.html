@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Magic Carpet School: About us</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body class="body">
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+            <section class="navtags">
+                <a href="{{ url_for('home') }}" class="navtext">Home</a>
+                <a href="{{ url_for('about') }}" class="navtext">About us</a>
+                <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+                <a href="{{ url_for('history') }}" class="navtext">History</a>
+                <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+                <a href="/login" class="navtext">Login</a>
+                <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+            </section>
+        </nav>
+
+<section class="welcome">
+    <div class="introdiv">
+        <h1 class="introh1">DISCOVER OUR SCHOOL</h1>
+        <p class="intropara">A place where learning meets opportunity in Addis Ababa.</p>
+        <p class="fun">About us:</p>
+    </div>
+</section>
+
+<section class="firstsec">
+    <div class="fsttxt">
+        <h2 class="fsttexth">Where We Are</h2>
+        <p class="fsttext">
+            Located in:<a href="https://maps.app.goo.gl/nL2o5zoYBqaEzBh26" class="locationlink" target="_blank"> Yeka Sub-city, Woreda 8, Addis Ababa</a>
+            <p class="fsttext">our campus spans over 9,000 m².
+            It is designed to give students a calm, spacious, and inspiring environment
+            for both learning and personal growth.</p>
+        </p>
+    </div>
+
+    <a href="https://maps.app.goo.gl/nL2o5zoYBqaEzBh26" style="margin-left: 20px;" target="_blank"><img src="../static/images/school-location.jpg"  style="width: 300px; opacity: 90%;
+    border-radius: 20px;"></a>
+</section>
+
+<section class="secsec">
+    <div class="secdiv">
+        <div>
+            <h1 class="sech1">Facilities</h1>
+            <p class="secp">
+                Our school includes 
+                <ul class="secp">
+                    <li>modern classrooms</li>
+                    <li>fully equipped science laboratories</li>
+                    <li>a student clinic</li> 
+                    <li>creative art gallery</li>
+                    Each space is designed to
+                support both academic excellence and student wellbeing.
+                </ul>   
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="firstsec">
+    <img src="../static/images/Librarypic.jpg" class="firstimgs">
+
+    <div class="fsttxt">
+        <h2 class="fsttexth">Learning Beyond Classrooms</h2>
+        <p class="fsttext">
+            We offer separate libraries for primary and secondary students, creating
+            focused environments for every age group. Our Scout program also provides
+            outdoor learning experiences, including on-campus camping and teamwork activities.
+        </p>
+    </div>
+</section>
+
+        <section class="secsec">
+            <div class="secdiv">
+                <div>
+                <h1 class="sech1">Sports</h1>
+                <p class="secp">Students enjoy football, basketball, volleyball, and ping pong through exciting tournaments and friendly matches.
+                Whether competing seriously or playing just for fun, sports bring energy, teamwork, and school spirit to our community.</p>
+                </div>
+                <img src="../static/images/Footballtp.png" class="footballtp">
+            </div>
+        </section>
+        <section class="sec3">
+            <div>
+                
+            </div>
+        </section>
+
+        <section class="secsec" style="margin-top: 20px;">
+            <img src="../static/images/science-lab.jpg" class="firstimgs">
+            <div class="fsttxt" style="padding: 15px 15px;">
+                <h2 class="sech1">Science Laboratories</h2>
+                <p class="fsttext">
+                    Our Physics, Chemistry, and Biology laboratories allow students to
+                    learn through practical experiments. Hands-on learning helps develop
+                    scientific thinking, curiosity, and problem-solving skills that extend
+                    beyond the classroom.
+                </p>
+            </div>    
+        </section>
+
+        <section class="secsec" style="margin-top: 20px;">
+            <img src="../static/images/computer-lab.jpg" class="firstimgs">
+            <div class="fsttxt" style="padding: 15px 15px;">
+            <h2 class="sech1">Computer & ICT Education</h2>
+            <p class="fsttext">
+            Technology plays an important role in modern education. Our computer laboratories
+            provide students with opportunities to learn digital skills, programming,
+            research, and responsible technology use in a safe environment.
+            </p>
+            </div>
+        </section>
+
+        <section class="secsec" style="margin-top: 20px;">
+            <div class="fsttxt" style="padding: 15px 15px;">
+            <h2 class="sech1">Creative Arts</h2>
+            <p class="fsttext">
+            Creativity is an essential part of education. Students express themselves
+            through drawing, painting, drama, music, and cultural performances throughout
+            the academic year.
+            </p>
+            </div>
+            <img src="../static/images/art-room.jpg" class="firstimgs">
+        </section>
+
+        <section class="secsec" style="margin-top: 20px;">
+            <img src="../static/images/student-care.jpg" class="firstimgs"> <br>
+            <div class="fsttxt" style="padding: 15px 15px;">
+            <h2 class="sech1">Student Safety & Wellbeing</h2>
+            <p class="fsttext">
+            The wellbeing of every student is our highest priority. We provide a safe
+            campus, caring teachers, student guidance services, and a healthy learning
+            environment where students can feel supported every day.
+            </p>
+            </div>
+        </section>
+
+        <section class="secsec" style="margin-top: 20px;">
+            <div class="fsttxt" style="padding: 15px 15px;">
+            <h2 class="sech1">School Events</h2>
+            <p class="fsttext">
+            Throughout the year, students participate in educational trips, cultural
+            celebrations, science exhibitions, sports competitions, talent shows, and
+            community service activities that make learning enjoyable and memorable.
+            </p>
+            </div>
+            <img src="../static/images/events.jpg" class="firstimgs">
+        </section>
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div>
+            <h3>Magic Carpet School</h3>
+            <p>Where Learning Is Magic.</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <p>
+                <a href="index.html" class="navtext">Home</a>
+                <a href="about.html" class="navtext">About us</a>
+                <a href="#" class="navtext">Courses</a>
+                <a href="contact.html" class="navtext">Contact</a>
+                <a href="registration.html" class="navtext">Register</a>
+            </p>
+        </div>
+
+        <div>
+            <h4>Contact</h4>
+            <p>Addis Ababa, Ethiopia</p>
+            <p>info@magiccarpet.edu</p>
+        </div>
+
+    </div>
+
+</footer>
+
+    </body>
+    </html>

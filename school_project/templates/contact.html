@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Magic Carpet School: Contact</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+    </head>
+    <body class="body">
+        
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+            <section class="navtags">
+                <a href="{{ url_for('home') }}" class="navtext">Home</a>
+                <a href="{{ url_for('about') }}" class="navtext">About us</a>
+                <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+                <a href="{{ url_for('history') }}" class="navtext">History</a>
+                <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+                <a href="/login" class="navtext">Login</a>
+                <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+            </section>
+        </nav>
+
+        <section id="contact" class="secsec" style="margin-top: 80px; padding-bottom: 60px;">
+            <div class="fsttxt" style="text-align: center; width: 100%; max-width: 600px;">
+                <h2 class="fsttexth">Get In Touch</h2>
+                    <p class="fsttext">PO BOX 27712, Addis Ababa, Ethiopia</p>
+                    <p class="fsttext">Phone: (+251) 11-663-6605</p>
+                    <p class="fsttext">Telegram: <a href="https://t.me/Mgc_all" style="margin-left: 10px; color:aliceblue" target="_blank">t.me/Mgc_all</p></a>
+            </div>
+        </section>
+
+        <section class="contsmap">
+            <div style="border-radius: 5%; overflow: hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4371.42996147212!2d38.79043939999999!3d9.023207099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85653d53d663%3A0x190e8cfef5484585!2sMagic%20Carpet%20Schools!5e1!3m2!1sen!2set!4v1778951284385!5m2!1sen!2set" 
+            width="1000" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" caption="Addis Ababa Branch"></iframe>
+            </div>
+            <!--<a href="https://maps.app.goo.gl/RsnBUoJcxUM1z6xz6" target="_blank"><img src="../static/images/contmap.png" alt="Map location image" class="contimap"></a>-->
+        </section>
+    </body>
+</html>

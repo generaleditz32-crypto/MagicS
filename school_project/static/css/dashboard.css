@@ -1,0 +1,284 @@
+/* ================================
+   GLOBAL POLISH (keep structure)
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, sans-serif;
+}
+
+body {
+    background: #0b1220;
+    color: #e5e7eb;
+}
+
+/* ================================
+   DASHBOARD LAYOUT
+================================ */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ================================
+   SIDEBAR (modern glass + depth)
+================================ */
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #0f172a, #0b1220);
+    padding: 25px 20px;
+    position: fixed;
+    height: 100%;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+}
+
+.sidebar h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: #60a5fa;
+    letter-spacing: 1px;
+}
+
+/* LINKS */
+.sidebar a {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    transition: 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* hover glow effect */
+.sidebar a:hover {
+    background: rgba(37, 99, 235, 0.15);
+    color: #fff;
+    transform: translateX(5px);
+}
+
+/* active feel */
+.sidebar a:active {
+    transform: scale(0.98);
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.main-content {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 30px;
+    background: radial-gradient(circle at top, #111827, #0b1220);
+}
+
+/* ================================
+   STAT GRID (glass cards)
+================================ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+/* CARD BASE */
+.stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    padding: 22px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+}
+
+/* hover lift */
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(37, 99, 235, 0.5);
+}
+
+/* titles */
+.stat-card h3 {
+    color: #94a3b8;
+    margin-bottom: 10px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* numbers */
+.stat-card h1 {
+    font-size: 2.4rem;
+    color: #60a5fa;
+}
+
+/* ================================
+   MAIN CARDS
+================================ */
+
+.card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    padding: 22px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(96,165,250,0.3);
+}
+
+/* ================================
+   STUDENT LIST CARDS
+================================ */
+
+.card > div {
+    transition: 0.2s ease;
+}
+
+/* student block (your inner cards) */
+.card .card {
+    margin-top: 15px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ================================
+   BUTTONS (modern pill style)
+================================ */
+
+button {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    border: none;
+    padding: 9px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.25s ease;
+    box-shadow: 0 5px 15px rgba(37,99,235,0.25);
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(37,99,235,0.35);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ================================
+   TABLES (if used later)
+================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+table th {
+    background: #1e293b;
+    color: #93c5fd;
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+table tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* ================================
+   CHAT (polished bubbles)
+================================ */
+
+.chat-box {
+    height: 500px;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* messages */
+.message {
+    padding: 12px 16px;
+    border-radius: 14px;
+    max-width: 70%;
+    animation: fadeIn 0.2s ease;
+}
+
+/* sent */
+.sent {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: white;
+    align-self: flex-end;
+}
+
+/* received */
+.received {
+    background: rgba(255,255,255,0.08);
+    color: #e5e7eb;
+    align-self: flex-start;
+}
+
+/* ================================
+   INPUTS
+================================ */
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.03);
+    color: white;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 10px rgba(59,130,246,0.3);
+}
+
+/* ================================
+   ANIMATION
+================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

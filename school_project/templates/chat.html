@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Chat</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>Chat System</h2>
+
+        {% if session["role"] == "teacher" %}
+            <a href="/dashboard/teacher">Dashboard</a>
+        {% else %}
+            <a href="/dashboard/student">Dashboard</a>
+        {% endif %}
+
+        <a href="/logout">Logout</a>
+
+        <br><br>
+
+        <button onclick="toggleDarkMode()">
+            Dark Mode
+        </button>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <div class="card">
+
+            <h2>Conversation</h2>
+
+            <!-- CHAT BOX -->
+
+            <div class="chat-box" id="chat-box">
+
+                {% for msg in messages %}
+
+                    {% if msg[0] == session["user"] %}
+
+                        <div class="message sent">
+
+                            <p>{{ msg[1] }}</p>
+
+                            <small>{{ msg[2] }}</small>
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="message received">
+
+                            <p>{{ msg[1] }}</p>
+
+                            <small>{{ msg[2] }}</small>
+
+                        </div>
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </div>
+
+            <!-- INPUT -->
+
+            <form method="POST">
+
+                <br>
+
+                <textarea
+                    name="message"
+                    rows="3"
+                    placeholder="Type your message..."
+                    required></textarea>
+
+                <br><br>
+
+                <button type="submit">
+                    Send
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+/* ===== AUTO SCROLL ===== */
+
+let chatBox = document.getElementById("chat-box");
+
+chatBox.scrollTop = chatBox.scrollHeight;
+
+/* ===== DARK MODE ===== */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")) {
+
+        localStorage.setItem("theme", "dark");
+
+    } else {
+
+        localStorage.setItem("theme", "light");
+    }
+}
+
+if(localStorage.getItem("theme") === "dark") {
+
+    document.body.classList.add("dark");
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Edit User</h1>
+        <form method="POST">
+            <label>Name</label>
+            <input
+                type="text"
+                name="name"
+                value="{{ user[1] }}"
+                required>
+            <br><br>
+            <label>Grade</label>
+            <input
+                type="text"
+                name="grade"
+                value="{{ user[4] if user[4] else '' }}">
+            <br><br>
+            <label>Stream</label>
+            <input
+                type="text"
+                name="stream"
+                value="{{ user[5] if user[5] else '' }}">
+            <br><br>
+            <label>Subject</label>
+            <input
+                type="text"
+                name="subject"
+                value="{{ user[6] if user[6] else '' }}">
+            <br><br>
+            <button type="submit">
+                Save Changes
+            </button>
+        </form>
+        <br>
+        <a href="/dashboard/admin">
+            Back
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

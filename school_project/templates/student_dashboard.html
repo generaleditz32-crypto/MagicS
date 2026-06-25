@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<script>
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+
+    // Save preference
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+}
+
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+}
+</script>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="popup {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>Student Panel</h2>
+
+        <a href="#">Dashboard</a>
+        <a href="#">Grades</a>
+        <a href="#">Announcements</a>
+        <a href="/logout">Logout</a>
+
+        <br><br>
+
+        <button onclick="toggleDarkMode()">Toggle Mode</button>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+
+        <div class="card">
+            <h1>Welcome {{ student[1] }}</h1>
+            <p>ID: {{ student[0] }}</p>
+            <p>Grade: {{ student[4] }}</p>
+            <p>Stream: {{ student[5] }}</p>
+        </div>
+
+        <!-- GRADES -->
+        <div class="card">
+            <h2>Grades</h2>
+
+            <table>
+                <tr>
+                    <th>Subject</th>
+                    <th>Test</th>
+                    <th>Assignment</th>
+                    <th>Final</th>
+                    <th>Average</th>
+                </tr>
+
+                {% for g in grades %}
+                <tr>
+                    <td>{{ g[0] }}</td>
+                    <td>{{ g[1] }}</td>
+                    <td>{{ g[2] }}</td>
+                    <td>{{ g[3] }}</td>
+                    <td>{{ (g[1] + g[2] + g[3]) // 3 }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <h3>Overall Average: {{ overall_average }}%</h3>
+
+        {% if overall_average >= 50 %}
+        <p>PASS</p>
+        {% else %}
+        <p>FAIL</p>
+        {% endif %}
+
+        <div class="card">
+            <h2>Available Teachers</h2>
+            {% for teacher in teachers %}
+                <div class="teacher-card">
+                    <h3>{{ teacher[1] }}</h3>
+                    <p>
+                        Subject:
+                        {{ teacher[2] }}
+                    </p>
+                    <a href="/chat/{{ teacher[0] }}">
+                        <button>
+                            Chat
+                        </button>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- ANNOUNCEMENTS -->
+        <div class="card">
+            <h2>Announcements</h2>
+
+            {% for a in announcements %}
+                <div class="message received">
+                    <strong>{{ a[0] }}</strong>
+                    <p>{{ a[1] }}</p>
+                    <small>{{ a[2] }}</small>
+                </div>
+            {% endfor %}
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+</body>
+</html>

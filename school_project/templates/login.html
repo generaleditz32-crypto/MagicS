@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="../static/css/Loginform.css">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="popup {{ category }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+            <section class="navtags">
+                <a href="{{ url_for('home') }}" class="navtext">Home</a>
+                <a href="{{ url_for('about') }}" class="navtext">About us</a>
+                <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+                <a href="{{ url_for('history') }}" class="navtext">History</a>
+                <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+                <a href="/login" class="navtext">Login</a>
+                <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+            </section>
+    </nav>
+
+    <div class="login-wrapper">
+        <div class="login-card">
+            <h1 class="login-title">
+                Login Portal
+            </h1>
+            <p class="login-subtitle">
+                Choose your account type
+            </p>
+            <div class="login-buttons">
+                <a href="/login/student">
+                    <button class="portal-btn">
+                        Student Login
+                    </button>
+                </a>
+                <a href="/login/teacher">
+                    <button class="portal-btn">
+                        Teacher Login
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

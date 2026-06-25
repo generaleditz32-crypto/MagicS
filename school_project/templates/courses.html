@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Courses</title>
+<link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body class="body">
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}" class="logo"><img src="../static/images/School logo.png" class="logoimg"></a>
+            <section class="navtags">
+                <a href="{{ url_for('home') }}" class="navtext">Home</a>
+                <a href="{{ url_for('about') }}" class="navtext">About us</a>
+                <a href="{{ url_for('courses') }}" class="navtext">Courses</a>
+                <a href="{{ url_for('history') }}" class="navtext">History</a>
+                <a href="{{ url_for('contact') }}" class="navtext">Contact</a>
+                <a href="/login" class="navtext">Login</a>
+                <a href="{{ url_for('registration') }}" class="navtext">Register</a>
+            </section>
+        </nav>
+
+<section class="welcome">
+    <div class="introdiv">
+        <h1 class="introh1">COURSE STRUCTURE</h1>
+        <p class="intropara">Explore subjects across all grade levels</p>
+    </div>
+</section>
+
+<section class="secsec">
+
+<input type="radio" name="filter" id="primary" checked>
+<input type="radio" name="filter" id="secondary">
+<input type="radio" name="filter" id="prep">
+
+<div class="filter-controls">
+    <label for="primary">Primary(1-8)</label>
+    <label for="secondary">Grades 9–10</label>
+    <label for="prep">Grades 11–12</label>
+</div>
+
+<div class="courses-grid">
+
+<div class="course-card" data-group="primary">
+<h3>General Science</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>Mathematics</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>English</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>Amharic</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>Oromic</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>Career & Technology</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="primary">
+<h3>Performing & Visual Arts</h3>
+<p>Primary Level</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Mathematics</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>English</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Biology</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Chemistry</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Physics</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Geography</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>History</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>ICT</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Citizenship</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="secondary">
+<h3>Oromic</h3>
+<p>Grades 9–10</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3>Mathematics</h3>
+<p>Grades 11–12 (All Streams)</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3>English</h3>
+<p>Grades 11–12 (All Streams)</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3>ICT</h3>
+<p>Grades 11–12 (All Streams)</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge science">Biology</h3>
+<p>Natural Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge science">Physics</h3>
+<p>Natural Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge science">Chemistry</h3>
+<p>Natural Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge science">Agriculture</h3>
+<p>Natural Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge science">Web Development</h3>
+<p>Natural Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge social">History</h3>
+<p>Social Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge social">Geography</h3>
+<p>Social Science</p>
+</div>
+
+<div class="course-card" data-group="prep">
+<h3 class="badge social">Accounting</h3>
+<p>Social Science</p>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>
